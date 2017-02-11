@@ -8,8 +8,6 @@ using namespace std;
 void readStateFile(string filePath);
 void writeMoveFile(string filePath);
 
-//1up 2left 3right 4down 5bomb 6timer
-
 int _tmain(int argc, _TCHAR* argv[])
 {
 	string filePath = argv[2];
@@ -41,9 +39,9 @@ void readStateFile(string filePath)
 
 void writeMoveFile(string filePath)
 {
+	/*Kode gerakan: 1up 2left 3right 4down 5bomb 6timer*/
 	cout << "Writing move file " << filePath + "/" + "move.txt" << std::endl;
 	ofstream outfile(filePath + "/" + "move.txt");
-
 	if (outfile.is_open())
 	{
 		random_device rd;
