@@ -1,8 +1,0 @@
-{
-	"Author":"Kelompok 32",
-    "Email":"k32@k32.com",
-    "NickName" :"BomberBot32",
-    "BotType": "CPlusPlus",
-    "ProjectLocation" : "BomberBot32\\",
-    "RunFile" : "BomberBot32\\Release\\BomberBot32.exe"
-}
