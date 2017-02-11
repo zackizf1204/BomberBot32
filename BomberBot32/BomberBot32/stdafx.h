@@ -17,3 +17,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h> 
+
+#include "point.h"
+#include "tipe.h"
+#include "mapreader.h"

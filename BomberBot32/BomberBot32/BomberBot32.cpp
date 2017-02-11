@@ -31,7 +31,7 @@ void readStateFile(string filePath)
 	{
 		while (getline(myfile, line))
 		{
-			fileContent += line += "\n";
+			fileContent += line;
 		}
 		myfile.close();
 	}
@@ -39,7 +39,7 @@ void readStateFile(string filePath)
 
 void writeMoveFile(string filePath)
 {
-	/*Kode gerakan: 1up 2left 3right 4down 5bomb 6timer*/
+	/*Kode gerakan: 1=up 2=left 3=right 4=down 5=bomb 6=timerbomb1*/
 	cout << "Writing move file " << filePath + "/" + "move.txt" << std::endl;
 	ofstream outfile(filePath + "/" + "move.txt");
 	if (outfile.is_open())

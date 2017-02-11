@@ -1,9 +1,13 @@
+// tipe.h
+// Tipe bentukan untuk menyimpan data dari map.txt
+//
 
-#ifndef Tipe_H
-#define Tipe_H
+#pragma once
+
+#ifndef TIPE_H
+#define TIPE_H
 
 #include "point.h"
-#include "boolean.h"
 
 /*  Kamus Umum */
 #define IdxMax 100
@@ -12,7 +16,6 @@
 /* Indeks minimum array */
 #define IdxUndef -999 
 /* Indeks tak terdefinisi*/
-
 
 //Type Data Bomb
 typedef struct 
@@ -40,8 +43,9 @@ typedef struct
 	int Width;
 	int Height;
 	int Round;
-	long Seed;
+	long long Seed;
 	int Bounty;
+	char** Block;
 } Map;
 
 /* Definisi elemen dan koleksi objek */

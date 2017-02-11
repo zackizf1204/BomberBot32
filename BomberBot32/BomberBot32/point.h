@@ -2,14 +2,19 @@
 /* Tanggal: 28 Agustus 2016 */
 /* *** Definisi ABSTRACT DATA TYPE POINT *** */
 
+#pragma once
+
 #ifndef POINT_H
 #define POINT_H
+#define _USE_MATH_DEFINES
 
-#include "boolean.h"
+#include <math.h>
+
+using namespace std;
 
 typedef struct { 
-	float X; /* absis   */
-	float Y; /* ordinat */
+	int X; /* absis   */
+	int Y; /* ordinat */
 } POINT;
 
 /* *** Notasi Akses: Selektor POINT *** */
@@ -18,16 +23,16 @@ typedef struct {
         
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */
-POINT MakePOINT (float X, float Y);
+POINT MakePOINT (int X, int Y);
 /* Membentuk sebuah POINT dari komponen-komponennya */
 
-/* *** KELOMPOK Interaksi dengan I/O device, BACA/TULIS  *** */                                                 
-void BacaPOINT (POINT * P); 
-/* Membaca nilai absis dan ordinat dari keyboard dan membentuk 
-   POINT P berdasarkan dari nilai absis dan ordinat tersebut */
+/* *** KELOMPOK Interaksi dengan I/O device, BACA/TULIS  *** */
+void BacaPOINT(POINT * P);
+/* Membaca nilai absis dan ordinat dari keyboard dan membentuk
+POINT P berdasarkan dari nilai absis dan ordinat tersebut */
 /* Komponen X dan Y dibaca dalam 1 baris, dipisahkan 1 buah spasi */
-/* Contoh: 1 2 
-   akan membentuk POINT <1,2> */
+/* Contoh: 1 2
+akan membentuk POINT <1,2> */
 /* I.S. Sembarang */
 /* F.S. P terdefinisi */
 void TulisPOINT (POINT P);
@@ -40,17 +45,17 @@ void TulisPOINT (POINT P);
 /* F.S. P tertulis di layar dengan format "(X,Y)" */                
 
 /* *** Kelompok operasi relasional terhadap POINT *** */
-boolean EQ (POINT P1, POINT P2);
+bool EQ (POINT P1, POINT P2);
 /* Mengirimkan true jika P1 = P2 : absis dan ordinatnya sama */
-boolean NEQ (POINT P1, POINT P2);
+bool NEQ (POINT P1, POINT P2);
 /* Mengirimkan true jika P1 tidak sama dengan P2 */
 
 /* *** Kelompok menentukan di mana P berada *** */
-boolean IsOrigin (POINT P);
+bool IsOrigin (POINT P);
 /* Menghasilkan true jika P adalah titik origin */
-boolean IsOnSbX (POINT P);
+bool IsOnSbX (POINT P);
 /* Menghasilkan true jika P terletak Pada sumbu X */
-boolean IsOnSbY (POINT P);
+bool IsOnSbY (POINT P);
 /* Menghasilkan true jika P terletak pada sumbu Y */
 int Kuadran (POINT P);
 /* Menghasilkan kuadran dari P: 1, 2, 3, atau 4 */
@@ -62,9 +67,9 @@ POINT NextX (POINT P);
 /* Mengirim salinan P dengan absis ditambah satu */              
 POINT NextY (POINT P);
 /* Mengirim salinan P dengan ordinat ditambah satu */
-POINT PlusDelta (POINT P, float deltaX, float deltaY);
+POINT PlusDelta (POINT P, int deltaX, int deltaY);
 /* Mengirim salinan P yang absisnya adalah Absis(P) + deltaX dan ordinatnya adalah Ordinat(P) + deltaY */
-POINT MirrorOf (POINT P, boolean SbX);
+POINT MirrorOf (POINT P, bool SbX);
 /* Menghasilkan salinan P yang dicerminkan terhadap salah satu sumbu */
 /* Jika SbX bernilai true, maka dicerminkan terhadap sumbu X */
 /* Jika SbX bernilai false, maka dicerminkan terhadap sumbu Y */
@@ -74,7 +79,7 @@ float Panjang (POINT P1, POINT P2);
 /* Menghitung panjang garis yang dibentuk P1 dan P2 */
 /* Perhatikanlah bahwa di sini spec fungsi kurang baik sebab menyangkut ADT Garis. */
 /* Tuliskan spec fungsi yang lebih tepat. */
-void Geser (POINT *P, float deltaX, float deltaY);
+void Geser (POINT *P, int deltaX, int deltaY);
 /* I.S. P terdefinisi */
 /* F.S. P digeser, absisnya sebesar deltaX dan ordinatnya sebesar deltaY */
 void GeserKeSbX (POINT *P);
@@ -87,12 +92,12 @@ void GeserKeSbY (POINT *P);
 /* F.S. P berada pada sumbu Y dengan ordinat yang sama dengan semula. */
 /* Proses : P digeser ke sumbu Y. */
 /* Contoh : Jika koordinat semula (9,9), maka menjadi (0,9) */
-void Mirror (POINT *P, boolean SbX);
+void Mirror (POINT *P, bool SbX);
 /* I.S. P terdefinisi */
 /* F.S. P dicerminkan tergantung nilai SbX atau SbY */
 /* Jika SbX true maka dicerminkan terhadap sumbu X */
 /* Jika SbX false maka dicerminkan terhadap sumbu Y */
-void Putar (POINT *P, float Sudut);
+void Putar (POINT *P, double Sudut);
 /* I.S. P terdefinisi */
 /* F.S. P digeser sebesar Sudut derajat dengan sumbu titik (0,0) */
 
