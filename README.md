@@ -1,3 +1,3 @@
 # BomberBot32
-Tubes Stima \n
+Tubes Stima 
 Link .json parser https://github.com/nlohmann/json
