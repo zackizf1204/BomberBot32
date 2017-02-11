@@ -49,10 +49,10 @@ void writeMoveFile(string filePath)
 		uniform_int_distribution<int> uni(0, 6);
 		//outfile << uni(rng) << std::endl;
 		if (uni(rng)%2==0) {
-			outfile << 4 << std::endl;
+			outfile << 2 << std::endl;
 		}
 		else {
-			outfile << 1 << std::endl;
+			outfile << 3 << std::endl;
 		}
 		outfile.close();
 	}
