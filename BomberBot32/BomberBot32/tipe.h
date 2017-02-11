@@ -17,7 +17,7 @@
 //Type Data Bomb
 typedef struct 
 {
-	POINT Location;
+	POINT BombLoc;
 	int Fuse;
 	int Radius;
 } Bombs;
@@ -31,7 +31,7 @@ typedef struct
 	bool Status;
 	Bombs B;
 	int BlastRadius;
-	POINT Location;
+	POINT PlayerLoc;
 } Player;
 
 //Type Data Map
@@ -53,7 +53,7 @@ typedef struct {
 
 /* Setter dan Getter untuk ADT Bombs*/
 
-#define BombLoc(C)	(C).Location
+#define BombLoc(C)	(C).BombLoc
 #define Fuse(C)		(C).Fuse
 #define Radius(C)	(C).Radius
 
@@ -65,7 +65,7 @@ typedef struct {
 #define Status(C)		(C).Status
 #define Bombs(C)		(C).B
 #define Blast(C)		(C).BlastRadius
-#define PlayerLoc(C)	(C).Location
+#define PlayerLoc(C)	(C).PlayerLoc
 
 /* Setter dan Getter untuk ADT Map*/
 
