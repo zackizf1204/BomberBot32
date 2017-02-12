@@ -12,7 +12,7 @@ Map GameMap;
 void ReadMap(ifstream& infile) {
 	size_t i;
 	string line;
-	map <char, POINT> PlayerLocMap;
+	string subline;
 	/*First Line Reading*/
 	i = 0;
 	getline(infile, line);
@@ -26,12 +26,6 @@ void ReadMap(ifstream& infile) {
 		getline(infile, line);
 		for (size_t k = 1; k <= Width(GameMap); k++) {
 			Block(GameMap, k, j) = line[k - 1];
-			if (IsAlphabet(Block(GameMap, k, j))) {
-				if (!IsCapital(Block(GameMap, k, j))) {
-					Block(GameMap, k, j) -= 32;
-				}
-				PlayerLocMap[Block(GameMap, k, j)] = MakePOINT(k, j);
-			}
 		}
 	}
 	/*Players Data Reading*/
@@ -50,13 +44,7 @@ void ReadMap(ifstream& infile) {
 			getline(infile, line); i = 0;
 			Status(Elmt(PlayerList, Neff(PlayerList))) = (GetData(line, i))[0] == 'A';
 			getline(infile, line); i = 0;
-			ReadBombs(line, i, B(Elmt(PlayerList, Neff(PlayerList))), NeffBombs(Elmt(PlayerList, Neff(PlayerList))));
-			getline(infile, line); i = 0;
-			BombBag(Elmt(PlayerList, Neff(PlayerList))) = GetNumber(line, i);
-			getline(infile, line); i = 0;
-			Blast(Elmt(PlayerList, Neff(PlayerList))) = GetNumber(line, i);
-			getline(infile, line);
-			PlayerLoc(Elmt(PlayerList, Neff(PlayerList))) = PlayerLocMap[Key(Elmt(PlayerList, Neff(PlayerList)))];
+			//to be continued...  baca data belum lengkap
 		}
 	}
 }
@@ -89,31 +77,10 @@ long long GetNumber(string &str, size_t& idx) {
 	}
 	return result;
 }
-void ReadBombs(string& str, size_t& idx, Bombs * ArrBombs, int& NeffBombs) {
-	int x, y;
-	NeffBombs = 0;
-	do {
-		SkipTo(str, idx, '{');
-		if (idx < str.length()) {
-			NeffBombs++;
-			x = GetNumber(str, idx);
-			y = GetNumber(str, idx);
-			BombLoc(ArrBombs[NeffBombs]) = MakePOINT(x,y);
-			Fuse(ArrBombs[NeffBombs]) = GetNumber(str, idx);
-			Radius(ArrBombs[NeffBombs]) = GetNumber(str, idx);
-		}
-	} while (idx < str.length());
-}
 
 /*CEK & KONVERSI TIPE*/
 bool IsNumber(char c) {
 	return (c >= 48 && c <= 57);
-}
-bool IsAlphabet(char c) {
-	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
-}
-bool IsCapital(char c) {
-	return (c >= 65 && c <= 90);
 }
 int CharToInt(char c) {
 	return (c - 48);

@@ -71,7 +71,6 @@ typedef struct {
 #define Key(C)			(C).Key
 #define Points(C)		(C).Points
 #define Status(C)		(C).Status
-#define B(C)			(C).B
 #define Bombs(C,i)		((C).B)[(i)] /*i>=1*/
 #define NeffBombs(C)	(C).NeffBombs
 #define BombBag(C)		(C).BombBag

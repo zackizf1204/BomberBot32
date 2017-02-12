@@ -36,17 +36,10 @@ long long GetNumber(string& str, size_t& idx);
 	/*Melakukan SkipToNumber(str,idx)*/
 	/*Kemudian membaca deretan angka dan dikonversi ke long long*/
 	/*Di akhir pembacaan, idx bernilai 1 lebih tinggi daripada index angka yang terakhir dibaca*/
-void ReadBombs(string& str, size_t& idx, Bombs* ArrBombs, int& NeffBombs);
-	/*Membaca data Bombs pada string str, dimulai dari index idx*/
-	/*Mengisikan datanya ke dalam ArrBombs dan mengisikan banyaknya ke dalam NeffBombs*/
 
 /*CEK & KONVERSI TIPE*/
 bool IsNumber(char c);
 	/*true jika c adalah karakter angka desimal 0-9*/
-bool IsAlphabet(char c);
-	/*true jika c adalah huruf*/
-bool IsCapital(char c);
-	/*true jika c adalah huruf kapital*/
 int CharToInt(char c);
 	/*Mengubah char ke int*/
 	/*Prekondisi : IsAngka(c)==true*/

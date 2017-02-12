@@ -1,4 +1,4 @@
-﻿Build started 12/02/2017 23:13:59.
+﻿Build started 12/02/2017 17:11:25.
      1>Project "D:\STEI ITB\Kuliah Informatika\semester 4\IF2211 Strategi Algoritma\tubes 1\BomberBot32\BomberBot32\BomberBot32\BomberBot32.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BomberBot32.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BomberBot32.cpp
@@ -13,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.39
+Time Elapsed 00:00:00.30
