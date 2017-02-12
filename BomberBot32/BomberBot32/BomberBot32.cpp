@@ -35,12 +35,27 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		cout << endl;
 	}
-	cout << "Data Player Terakhir :" << endl;
-	cout << "Name = " << Name(Elmt(PlayerList, Neff(PlayerList))) << endl;
-	cout << "Key = " << Key(Elmt(PlayerList, Neff(PlayerList))) << endl;
-	cout << "Points = " << Points(Elmt(PlayerList, Neff(PlayerList))) << endl;
-	cout << "Status = " << Status(Elmt(PlayerList, Neff(PlayerList))) << endl;
-	cout << "Tekan Enter untuk keluar" << endl;
+	cout << "Data Player :" << endl;
+	for (int i = 1; i <= Neff(PlayerList); i++) {
+		cout << "==========<" << i << ">==========" << endl;
+		cout << "Name = " << Name(Elmt(PlayerList, i)) << endl;
+		cout << "Key = " << Key(Elmt(PlayerList, i)) << endl;
+		cout << "Points = " << Points(Elmt(PlayerList, i)) << endl;
+		cout << "Status = " << Status(Elmt(PlayerList, i)) << endl;
+		cout << "Daftar Bombs = " << endl;
+		for (int j = 1; j <= NeffBombs(Elmt(PlayerList, i)); j++) {
+			cout << "\t[";
+			cout << "x(kolom)=" << Absis(BombLoc(Bombs(Elmt(PlayerList, i), j))) << ";";
+			cout << "y(baris)=" << Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j))) << ";";
+			cout << "f=" << Fuse(Bombs(Elmt(PlayerList, i), j)) << ";";
+			cout << "r=" << Radius(Bombs(Elmt(PlayerList, i), j)) << ";";
+			cout << "]\n";
+		}
+		cout << "Bomb Bag = " << BombBag(Elmt(PlayerList, i)) << endl;
+		cout << "Blast Radius = " << Blast(Elmt(PlayerList, i)) << endl;
+		cout << "Lokasi(x(kolom),y(baris)) = "; TulisPOINT(PlayerLoc(Elmt(PlayerList, i))); cout << endl;
+	}
+	cout << endl << "Tekan Enter untuk keluar" << endl;
 	cin.ignore();
 	*/
 	
@@ -68,10 +83,10 @@ void writeMoveFile(string filePath)
 		uniform_int_distribution<int> uni(1, 6);
 		//outfile << uni(rng) << endl;
 		if (uni(rng)%2==0) {
-			outfile << 2 << endl;
+			outfile << 1 << endl;
 		}
 		else {
-			outfile << 3 << endl;
+			outfile << 4 << endl;
 		}
 		outfile.close();
 	}

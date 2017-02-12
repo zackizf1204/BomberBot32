@@ -11,12 +11,12 @@
 #include <tchar.h>
 
 
-
 // TODO: reference additional headers your program requires here
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <stdlib.h> 
+#include <map>
 
 #include "point.h"
 #include "tipe.h"
