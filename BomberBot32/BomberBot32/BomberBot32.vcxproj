@@ -77,6 +77,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="sampledata\map.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mapreader.h" />

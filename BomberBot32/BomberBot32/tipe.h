@@ -10,7 +10,7 @@
 #include "point.h"
 
 /*  Kamus Umum */
-#define IdxMax 100
+#define IdxMax 200
 /* Indeks maksimum array, sekaligus ukuran maksimum array dalam C */
 #define IdxMin 1
 /* Indeks minimum array */
@@ -28,11 +28,13 @@ typedef struct
 // Type Data Construct Player
 typedef struct 
 {
-	char Name[25];
+	string Name;
 	char Key;
 	int Points;
-	bool Status;
-	Bombs B;
+	bool Status; /*true jika hidup*/
+	Bombs B[101]; /*index 0 tidak dipakai (IdxMin = 1)*/
+	int NeffBombs; /*banyaknya Bombs yang aktif / banyak elemen array B[]*/
+	int BombBag;
 	int BlastRadius;
 	POINT PlayerLoc;
 } Player;
@@ -45,13 +47,15 @@ typedef struct
 	int Round;
 	long long Seed;
 	int Bounty;
-	char** Block;
+	char Block[1001][1001];
+		/*matrix of char, index 0 tidak dipakai (IdxMin = 1)*/
+		/*Block[i][j] = kolom ke-i (X=i), baris ke-j (Y=j)*/
 } Map;
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;  /* type indeks */
 typedef struct { 
-	Player TI[IdxMax+1]; /* memori tempat penyimpan elemen (container) */
+	Player TI[IdxMax+1]; /* memori tempat penyimpan elemen (container), index 0 tidak dipakai (IdxMin = 1) */
 	int Neff; /* >=0, banyaknya elemen efektif */
 } TabPlayer;
 
@@ -67,7 +71,9 @@ typedef struct {
 #define Key(C)			(C).Key
 #define Points(C)		(C).Points
 #define Status(C)		(C).Status
-#define Bombs(C)		(C).B
+#define Bombs(C,i)		((C).B)[(i)] /*i>=1*/
+#define NeffBombs(C)	(C).NeffBombs
+#define BombBag(C)		(C).BombBag
 #define Blast(C)		(C).BlastRadius
 #define PlayerLoc(C)	(C).PlayerLoc
 
@@ -78,11 +84,12 @@ typedef struct {
 #define Round(C)	(C).Round
 #define Seed(C)		(C).Seed
 #define Bounty(C)	(C).Bounty
+#define Block(C,x,y) ((C).Block)[(x)][(y)] /*nb : Block(C,kolom,baris) , Block(C,X,Y) ; X>=1 ; Y>=1*/
 
 /* Setter dan Getter untuk ADT TabPlayer*/
 
 #define Neff(T)   (T).Neff
 #define TI(T)     (T).TI
-#define Elmt(T,i) (T).TI[i]
+#define Elmt(T,i) (T).TI[(i)] /*i>=1*/
 
 #endif
