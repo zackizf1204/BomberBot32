@@ -6,19 +6,20 @@
 using namespace std;
 
 void readStateFile(string filePath);
-void writeMoveFile(string filePath);
+void writeMoveFile(string filePath, char playerKey);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	/* Main Block */
 		/*jadikan comment untuk debugging*/
 		/*aktifkan lagi kalau selesai debugging*/
+	char playerKey = (argv[1])[0];
 	string filePath = argv[2];
 	cout << "Args: " << argc << endl;
 	cout << "Player Key: " << argv[1] << endl;
 	cout << "File Path: " << argv[2] << endl;
 	readStateFile(filePath);
-	writeMoveFile(filePath);
+	writeMoveFile(filePath,playerKey);
 
 	/* Debugging Block */
 		/*aktifkan untuk debugging*/
@@ -71,7 +72,7 @@ void readStateFile(string filePath)
 	myfile.close();
 }
 
-void writeMoveFile(string filePath)
+void writeMoveFile(string filePath, char playerKey)
 {
 	/*Kode gerakan: 1=up 2=left 3=right 4=down 5=bomb 6=timerbomb1*/
 	cout << "Writing move file " << filePath + "/" + "move.txt" << endl;
