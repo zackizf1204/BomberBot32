@@ -115,6 +115,9 @@ bool IsAlphabet(char c) {
 bool IsCapital(char c) {
 	return (c >= 65 && c <= 90);
 }
+bool IsNotCapital(char c) {
+	return (c >= 97 && c <= 122);
+}
 int CharToInt(char c) {
 	return (c - 48);
 }

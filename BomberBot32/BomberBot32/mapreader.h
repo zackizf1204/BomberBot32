@@ -47,6 +47,8 @@ bool IsAlphabet(char c);
 	/*true jika c adalah huruf*/
 bool IsCapital(char c);
 	/*true jika c adalah huruf kapital*/
+bool IsNotCapital(char c);
+	/*true jika c adalah huruf kecil*/
 int CharToInt(char c);
 	/*Mengubah char ke int*/
 	/*Prekondisi : IsAngka(c)==true*/

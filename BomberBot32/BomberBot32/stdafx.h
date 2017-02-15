@@ -17,7 +17,10 @@
 #include <fstream>
 #include <stdlib.h> 
 #include <map>
+#include <random>
+#include <deque>
 
 #include "point.h"
 #include "tipe.h"
 #include "mapreader.h"
+#include "pathfinding.h"

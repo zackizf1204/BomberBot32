@@ -2,7 +2,6 @@
 //
 
 #include "stdafx.h"
-#include <random>
 using namespace std;
 
 void readStateFile(string filePath);
@@ -56,6 +55,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "Blast Radius = " << Blast(Elmt(PlayerList, i)) << endl;
 		cout << "Lokasi(x(kolom),y(baris)) = "; TulisPOINT(PlayerLoc(Elmt(PlayerList, i))); cout << endl;
 	}
+	writeMoveFile("sampledata", 'A');
 	cout << endl << "Tekan Enter untuk keluar" << endl;
 	cin.ignore();
 	*/
@@ -79,16 +79,32 @@ void writeMoveFile(string filePath, char playerKey)
 	ofstream outfile(filePath + "/" + "move.txt");
 	if (outfile.is_open())
 	{
-		random_device rd;
+		int i = 1;
+		bool foundplayer = false;
+		while (i <= Neff(PlayerList) && !foundplayer) {
+			foundplayer = Key(Elmt(PlayerList,i)) == playerKey;
+			if (!foundplayer) i++;
+		}
+		POINT PlayerPosition;
+		Absis(PlayerPosition) = Absis(PlayerLoc(Elmt(PlayerList, i)));
+		Ordinat(PlayerPosition) = Ordinat(PlayerLoc(Elmt(PlayerList, i)));
+		if (InDanger(PlayerPosition)) {
+			/*kabur*/
+			outfile << Kabur(PlayerPosition) << endl;
+		}
+		else {
+			/*jalan*/
+			outfile << Kabur(PlayerPosition) << endl; /*seharusnya algoritma jalan*/
+		}
+		/*random_device rd;
 		mt19937 rng(rd());
 		uniform_int_distribution<int> uni(1, 6);
-		//outfile << uni(rng) << endl;
 		if (uni(rng)%2==0) {
 			outfile << 1 << endl;
 		}
 		else {
 			outfile << 4 << endl;
 		}
-		outfile.close();
+		outfile.close();*/
 	}
 }
