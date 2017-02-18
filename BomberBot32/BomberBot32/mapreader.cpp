@@ -27,10 +27,11 @@ void ReadMap(ifstream& infile) {
 		for (size_t k = 1; k <= Width(GameMap); k++) {
 			Block(GameMap, k, j) = line[k - 1];
 			if (IsAlphabet(Block(GameMap, k, j))) {
-				if (!IsCapital(Block(GameMap, k, j))) {
-					Block(GameMap, k, j) -= 32;
+				char playerKey = Block(GameMap, k, j);
+				if (!IsCapital(playerKey)) {
+					playerKey -= 32;
 				}
-				PlayerLocMap[Block(GameMap, k, j)] = MakePOINT(k, j);
+				PlayerLocMap[playerKey] = MakePOINT(k, j);
 			}
 		}
 	}

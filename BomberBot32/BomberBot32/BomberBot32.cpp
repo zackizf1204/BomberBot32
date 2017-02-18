@@ -10,20 +10,20 @@ void writeMoveFile(string filePath, char playerKey);
 int _tmain(int argc, _TCHAR* argv[])
 {
 	/* Main Block */
-		/*jadikan comment untuk debugging*/
-		/*aktifkan lagi kalau selesai debugging*/
+	/*jadikan comment untuk debugging*/
+	/*aktifkan lagi kalau selesai debugging*/
 	char playerKey = (argv[1])[0];
 	string filePath = argv[2];
 	cout << "Args: " << argc << endl;
 	cout << "Player Key: " << argv[1] << endl;
 	cout << "File Path: " << argv[2] << endl;
 	readStateFile(filePath);
-	writeMoveFile(filePath,playerKey);
+	writeMoveFile(filePath, playerKey);
 
 	/* Debugging Block */
-		/*aktifkan untuk debugging*/
-		/*jadikan comment kalau selesai debugging*/
-		/*tambah-tambahin aja kalau butuh debug sesuatu*/
+	/*aktifkan untuk debugging*/
+	/*jadikan comment kalau selesai debugging*/
+	/*tambah-tambahin aja kalau butuh debug sesuatu*/
 	/*
 	readStateFile("sampledata");
 	cout << "Seed = " << Seed(GameMap) << " ";
@@ -56,10 +56,26 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "Lokasi(x(kolom),y(baris)) = "; TulisPOINT(PlayerLoc(Elmt(PlayerList, i))); cout << endl;
 	}
 	writeMoveFile("sampledata", 'A');
+	for (int i = 1; i <= Height(GameMap); i++) {
+		for (int j = 1; j <= Width(GameMap); j++) {
+			if (Block(GameMap, j, i) == '+' || Block(GameMap, j, i) == '#') {
+				cout << Block(GameMap, j, i);
+			}
+			else {
+				if (InDanger(MakePOINT(j, i))) {
+					cout << "*";
+				}
+				else {
+					cout << " ";
+				}
+			}
+		}
+		cout << endl;
+	}
 	cout << endl << "Tekan Enter untuk keluar" << endl;
 	cin.ignore();
 	*/
-	
+
 	/* End of _tmain */
 	return 0;
 }
@@ -82,7 +98,7 @@ void writeMoveFile(string filePath, char playerKey)
 		int i = 1;
 		bool foundplayer = false;
 		while (i <= Neff(PlayerList) && !foundplayer) {
-			foundplayer = Key(Elmt(PlayerList,i)) == playerKey;
+			foundplayer = Key(Elmt(PlayerList, i)) == playerKey;
 			if (!foundplayer) i++;
 		}
 		POINT PlayerPosition;
@@ -93,15 +109,15 @@ void writeMoveFile(string filePath, char playerKey)
 			outfile << Kabur(PlayerPosition) << endl;
 		}
 		else {
-			
-				/*jalan*/
-				random_device rd;
-				mt19937 rng(rd());
-				uniform_int_distribution<int> uni(1, 5);
-				outfile << uni(rng) << endl;
-			
-			
-			} /*seharusnya algoritma jalan*/
-		}
-		outfile.close();
+
+			/*jalan*/
+			random_device rd;
+			mt19937 rng(rd());
+			uniform_int_distribution<int> uni(1, 5);
+			outfile << uni(rng) << endl;
+
+
+		} /*seharusnya algoritma jalan*/
 	}
+	outfile.close();
+}

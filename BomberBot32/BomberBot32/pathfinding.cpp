@@ -10,7 +10,7 @@ bool DangerKanan(POINT P)
 	int i, j;
 	bool found, danger;
 	danger = false;
-	a = Absis(P)+1;
+	a = Absis(P) + 1;
 	b = Ordinat(P);
 	while ((a < Width(GameMap)) && (Block(GameMap, a, Ordinat(P)) != '#') && (Block(GameMap, a, Ordinat(P)) != '+') && (!IsNotCapital(Block(GameMap, a, Ordinat(P)))) && !IsNumber((Block(GameMap, a, Ordinat(P)))))
 	{
@@ -31,11 +31,11 @@ bool DangerKanan(POINT P)
 			if ((IsNotCapital(Block(GameMap, a, Ordinat(P)))) || IsNumber((Block(GameMap, a, Ordinat(P)))))
 			{
 				found = false;
-				i = 0;
-				while ((i < Neff(PlayerList)) && (!found))
+				i = 1;
+				while ((i <= Neff(PlayerList)) && (!found))
 				{
-					j = 0;
-					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
+					j = 1;
+					while (j <= NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
 						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
@@ -73,7 +73,7 @@ bool DangerKiri(POINT P)
 	int i, j;
 	bool found, danger;
 	danger = false;
-	a = Absis(P)-1;
+	a = Absis(P) - 1;
 	b = Ordinat(P);
 	while ((a > 1) && (Block(GameMap, a, Ordinat(P)) != '#') && (Block(GameMap, a, Ordinat(P)) != '+') && (!IsNotCapital(Block(GameMap, a, Ordinat(P)))) && !IsNumber((Block(GameMap, a, Ordinat(P)))))
 	{
@@ -94,11 +94,11 @@ bool DangerKiri(POINT P)
 			if ((IsNotCapital(Block(GameMap, a, b))) || IsNumber((Block(GameMap, a, b))))
 			{
 				found = false;
-				i = 0;
-				while ((i < Neff(PlayerList)) && (!found))
+				i = 1;
+				while ((i <= Neff(PlayerList)) && (!found))
 				{
-					j = 0;
-					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
+					j = 1;
+					while (j <= NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
 						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
@@ -137,7 +137,7 @@ bool DangerAtas(POINT P)
 	bool found, danger;
 	danger = false;
 	a = Absis(P);
-	b = Ordinat(P)-1;
+	b = Ordinat(P) - 1;
 	while ((b >1) && (Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+') && (!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
 	{
 		b = b - 1;
@@ -157,11 +157,11 @@ bool DangerAtas(POINT P)
 			if ((IsNotCapital(Block(GameMap, a, b))) || IsNumber((Block(GameMap, a, b))))
 			{
 				found = false;
-				i = 0;
-				while ((i < Neff(PlayerList)) && (!found))
+				i = 1;
+				while ((i <= Neff(PlayerList)) && (!found))
 				{
-					j = 0;
-					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
+					j = 1;
+					while (j <= NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
 						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
@@ -200,7 +200,7 @@ bool DangerBawah(POINT P)
 	bool found, danger;
 	danger = false;
 	a = Absis(P);
-	b = Ordinat(P)+1;
+	b = Ordinat(P) + 1;
 	while ((b < Height(GameMap)) && (Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+') && (!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
 	{
 		b = b + 1;
@@ -220,11 +220,11 @@ bool DangerBawah(POINT P)
 			if ((IsNotCapital(Block(GameMap, a, b))) || IsNumber((Block(GameMap, a, b))))
 			{
 				found = false;
-				i = 0;
-				while ((i < Neff(PlayerList)) && (!found))
+				i = 1;
+				while ((i <= Neff(PlayerList)) && (!found))
 				{
-					j = 0;
-					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
+					j = 1;
+					while (j <= NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
 						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
@@ -257,7 +257,7 @@ bool DangerBawah(POINT P)
 }
 bool InDanger(POINT P)
 {
-	return(DangerKanan(P) || DangerKiri(P) || DangerAtas(P) || DangerBawah(P) || (IsNotCapital(Block(GameMap, Absis(P), Ordinat(P)))));
+	return(DangerKanan(P) || DangerKiri(P) || DangerAtas(P) || DangerBawah(P) || (IsNotCapital(Block(GameMap, Absis(P), Ordinat(P)))) || (IsNumber(Block(GameMap, Absis(P), Ordinat(P)))));
 }
 
 bool CekTembok(POINT P) {
@@ -358,7 +358,7 @@ void Kabur2(POINT p, int d, deque<POINT>& safe, deque<POINT>& notsafe) {
 	/*Menentukan apakah koordinat tetangga aman atau tidak aman*/
 	POINT tetangga;
 	int i = 0;
-	while (i<4 && safe.size()==0) {
+	while (i<4 && safe.size() == 0) {
 		if (dir == 1) {
 			Absis(tetangga) = Absis(p);
 			Ordinat(tetangga) = Ordinat(p) - 1;
