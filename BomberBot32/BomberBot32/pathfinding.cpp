@@ -267,7 +267,8 @@ bool CekTembok(POINT P) {
 
 	if ((Block(GameMap, a + 1, b) == '+') || (Block(GameMap, a - 1, b) == '+') || (Block(GameMap, a, b + 1) == '+') || (Block(GameMap, a, b - 1) == '+')) {
 		return(true);
-	} else {
+	}
+	else {
 		return(false);
 	}
 }
@@ -279,7 +280,8 @@ int Jalan(POINT P) {
 
 	if (InDanger(MakePOINT(a + 1, b)) || InDanger(MakePOINT(a - 1, b)) || InDanger(MakePOINT(a, b + 1)) || InDanger(MakePOINT(a, b - 1))) {
 		return 0;
-	} else {
+	}
+	else {
 		return(Kabur(P));
 	}
 }
@@ -318,6 +320,7 @@ int Kabur(POINT p) {
 		Ordinat(safeplace) = Ordinat(safe.front());
 		cout << "Tujuan : "; TulisPOINT(safeplace); cout << "Jarak : " << jarak[Absis(safeplace)][Ordinat(safeplace)] << endl;
 		while (jarak[Absis(safeplace)][Ordinat(safeplace)] > 1) {
+			cout << "before : " << jarak[Absis(safeplace)][Ordinat(safeplace)] << endl;
 			int i = 1;
 			POINT nextsafeplace;
 			do {
@@ -338,10 +341,12 @@ int Kabur(POINT p) {
 					Ordinat(nextsafeplace) = Ordinat(safeplace) + 1;
 				}
 				i++;
-			} while (i <= 4 && jarak[Absis(nextsafeplace)][Ordinat(nextsafeplace)]<=0 && jarak[Absis(nextsafeplace)][Ordinat(nextsafeplace)] <= jarak[Absis(safeplace)][Ordinat(safeplace)]);
+			} while (i <= 4 && (jarak[Absis(nextsafeplace)][Ordinat(nextsafeplace)] <= 0 || jarak[Absis(nextsafeplace)][Ordinat(nextsafeplace)] >= jarak[Absis(safeplace)][Ordinat(safeplace)]) );
+			i--;
 			Absis(safeplace) = Absis(nextsafeplace);
 			Ordinat(safeplace) = Ordinat(nextsafeplace);
 			cout << i << "Gerak dulu ke : "; TulisPOINT(safeplace); cout << "Jarak : " << jarak[Absis(safeplace)][Ordinat(safeplace)] << endl;
+			cout << "after : " << jarak[Absis(safeplace)][Ordinat(safeplace)] << endl;
 		}
 		if (Absis(safeplace) < Absis(p)) {
 			/*titik yang dituju ada di sebelah kiri pemain*/
@@ -395,9 +400,15 @@ void Kabur2(POINT p, int d, deque<POINT>& safe, deque<POINT>& notsafe) {
 		if (Block(GameMap, Absis(tetangga), Ordinat(tetangga)) != '#' && Block(GameMap, Absis(tetangga), Ordinat(tetangga)) != '+' && !isalnum(Block(GameMap, Absis(tetangga), Ordinat(tetangga))) && jarak[Absis(tetangga)][Ordinat(tetangga)]<0) {
 			if (!InDanger(tetangga)) {
 				safe.push_back(tetangga);
+				cout << "safe : ";
+				TulisPOINT(tetangga);
+				cout << endl;
 			}
 			else {
 				notsafe.push_back(tetangga);
+				cout << "not safe : ";
+				TulisPOINT(tetangga);
+				cout << endl;
 			}
 			jarak[Absis(tetangga)][Ordinat(tetangga)] = d + 1;
 		}
