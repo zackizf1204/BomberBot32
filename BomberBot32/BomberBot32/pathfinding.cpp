@@ -10,7 +10,7 @@ bool DangerKanan(POINT P)
 	int i, j;
 	bool found, danger;
 	danger = false;
-	a = Absis(P);
+	a = Absis(P)+1;
 	b = Ordinat(P);
 	while ((a < Width(GameMap)) && (Block(GameMap, a, Ordinat(P)) != '#') && (Block(GameMap, a, Ordinat(P)) != '+') && (!IsNotCapital(Block(GameMap, a, Ordinat(P)))) && !IsNumber((Block(GameMap, a, Ordinat(P)))))
 	{
@@ -22,13 +22,13 @@ bool DangerKanan(POINT P)
 	}
 	else
 	{
-		if ((Block(GameMap, a, Ordinat(P)) != '#') && (Block(GameMap, a, Ordinat(P)) != '+'))
+		if ((Block(GameMap, a, Ordinat(P)) == '#') || (Block(GameMap, a, Ordinat(P)) == '+'))
 		{
 			danger = false;
 		}
 		else
 		{
-			if ((!IsNotCapital(Block(GameMap, a, Ordinat(P)))) && !IsNumber((Block(GameMap, a, Ordinat(P)))))
+			if ((IsNotCapital(Block(GameMap, a, Ordinat(P)))) || IsNumber((Block(GameMap, a, Ordinat(P)))))
 			{
 				found = false;
 				i = 0;
@@ -37,7 +37,7 @@ bool DangerKanan(POINT P)
 					j = 0;
 					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
-						if ((Absis(P) == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (Ordinat(P) == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
+						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
 							if (abs(Absis(BombLoc(Bombs(Elmt(PlayerList, i), j))) - Absis(P)) <= Radius(Bombs(Elmt(PlayerList, i), j)))
 							{
@@ -73,7 +73,7 @@ bool DangerKiri(POINT P)
 	int i, j;
 	bool found, danger;
 	danger = false;
-	a = Absis(P);
+	a = Absis(P)-1;
 	b = Ordinat(P);
 	while ((a > 1) && (Block(GameMap, a, Ordinat(P)) != '#') && (Block(GameMap, a, Ordinat(P)) != '+') && (!IsNotCapital(Block(GameMap, a, Ordinat(P)))) && !IsNumber((Block(GameMap, a, Ordinat(P)))))
 	{
@@ -81,17 +81,17 @@ bool DangerKiri(POINT P)
 	}
 	if (a <= 1)
 	{
-		danger = true;
+		danger = false;
 	}
 	else
 	{
-		if ((Block(GameMap, a, Ordinat(P)) != '#') && (Block(GameMap, a, Ordinat(P)) != '+'))
+		if ((Block(GameMap, a, Ordinat(P)) == '#') || (Block(GameMap, a, Ordinat(P)) == '+'))
 		{
-			danger = true;
+			danger = false;
 		}
 		else
 		{
-			if ((!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
+			if ((IsNotCapital(Block(GameMap, a, b))) || IsNumber((Block(GameMap, a, b))))
 			{
 				found = false;
 				i = 0;
@@ -100,7 +100,7 @@ bool DangerKiri(POINT P)
 					j = 0;
 					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
-						if ((Absis(P) == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (Ordinat(P) == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
+						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
 							if (abs(Absis(BombLoc(Bombs(Elmt(PlayerList, i), j))) - Absis(P)) <= Radius(Bombs(Elmt(PlayerList, i), j)))
 							{
@@ -137,24 +137,24 @@ bool DangerAtas(POINT P)
 	bool found, danger;
 	danger = false;
 	a = Absis(P);
-	b = Ordinat(P);
-	while ((b < Height(GameMap)) && (Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+') && (!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
+	b = Ordinat(P)-1;
+	while ((b >1) && (Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+') && (!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
 	{
-		b = b + 1;
+		b = b - 1;
 	}
-	if (b >= Height(GameMap))
+	if (b == 1)
 	{
 		danger = false;
 	}
 	else
 	{
-		if ((Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+'))
+		if ((Block(GameMap, a, b) == '#') || (Block(GameMap, a, b) == '+'))
 		{
 			danger = false;
 		}
 		else
 		{
-			if ((!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
+			if ((IsNotCapital(Block(GameMap, a, b))) || IsNumber((Block(GameMap, a, b))))
 			{
 				found = false;
 				i = 0;
@@ -163,9 +163,9 @@ bool DangerAtas(POINT P)
 					j = 0;
 					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
-						if ((Absis(P) == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (Ordinat(P) == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
+						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
-							if (abs(Absis(BombLoc(Bombs(Elmt(PlayerList, i), j))) - Absis(P)) <= Radius(Bombs(Elmt(PlayerList, i), j)))
+							if (abs(Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j))) - Ordinat(P)) <= Radius(Bombs(Elmt(PlayerList, i), j)))
 							{
 								danger = true;
 							}
@@ -200,24 +200,24 @@ bool DangerBawah(POINT P)
 	bool found, danger;
 	danger = false;
 	a = Absis(P);
-	b = Ordinat(P);
-	while ((b > 1) && (Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+') && (!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
+	b = Ordinat(P)+1;
+	while ((b < Height(GameMap)) && (Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+') && (!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
 	{
-		b = b - 1;
+		b = b + 1;
 	}
-	if (b <= Height(GameMap))
+	if (b == Height(GameMap))
 	{
 		danger = false;
 	}
 	else
 	{
-		if ((Block(GameMap, a, b) != '#') && (Block(GameMap, a, b) != '+'))
+		if ((Block(GameMap, a, b) == '#') || (Block(GameMap, a, b) == '+'))
 		{
 			danger = false;
 		}
 		else
 		{
-			if ((!IsNotCapital(Block(GameMap, a, b))) && !IsNumber((Block(GameMap, a, b))))
+			if ((IsNotCapital(Block(GameMap, a, b))) || IsNumber((Block(GameMap, a, b))))
 			{
 				found = false;
 				i = 0;
@@ -226,9 +226,9 @@ bool DangerBawah(POINT P)
 					j = 0;
 					while (j < NeffBombs(Elmt(PlayerList, i)) && (!found))
 					{
-						if ((Absis(P) == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (Ordinat(P) == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
+						if ((a == Absis(BombLoc(Bombs(Elmt(PlayerList, i), j)))) && (b == Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j)))))
 						{
-							if (abs(Absis(BombLoc(Bombs(Elmt(PlayerList, i), j))) - Absis(P)) <= Radius(Bombs(Elmt(PlayerList, i), j)))
+							if (abs(Ordinat(BombLoc(Bombs(Elmt(PlayerList, i), j))) - Ordinat(P)) <= Radius(Bombs(Elmt(PlayerList, i), j)))
 							{
 								danger = true;
 							}

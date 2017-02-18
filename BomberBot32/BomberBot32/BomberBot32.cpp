@@ -93,18 +93,15 @@ void writeMoveFile(string filePath, char playerKey)
 			outfile << Kabur(PlayerPosition) << endl;
 		}
 		else {
-			/*jalan*/
-			outfile << Kabur(PlayerPosition) << endl; /*seharusnya algoritma jalan*/
+			
+				/*jalan*/
+				random_device rd;
+				mt19937 rng(rd());
+				uniform_int_distribution<int> uni(1, 5);
+				outfile << uni(rng) << endl;
+			
+			
+			} /*seharusnya algoritma jalan*/
 		}
-		/*random_device rd;
-		mt19937 rng(rd());
-		uniform_int_distribution<int> uni(1, 6);
-		if (uni(rng)%2==0) {
-			outfile << 1 << endl;
-		}
-		else {
-			outfile << 4 << endl;
-		}
-		outfile.close();*/
+		outfile.close();
 	}
-}
