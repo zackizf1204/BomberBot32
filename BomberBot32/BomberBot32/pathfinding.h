@@ -17,6 +17,8 @@ bool DangerBawah(POINT P);
 /*hanya untuk keperluan fungsi InDanger*/
 bool InDanger(POINT P);
 /*true jika P dalam radius ledakan bom*/
+bool CekTembok(POINT P);
+/*true jika disebelah player terdapat tembok*/
 int Kabur(POINT p);
 /*mengembalikan kode gerakan yang harus dilakukan untuk kabur dari titik p*/
 /*prekondisi : titik p tidak aman (InDanger(p)==true)*/
