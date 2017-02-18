@@ -267,8 +267,23 @@ bool CekTembok(POINT P) {
 
 	if ((Block(GameMap, a + 1, b) == '+') || (Block(GameMap, a - 1, b) == '+') || (Block(GameMap, a, b + 1) == '+') || (Block(GameMap, a, b - 1) == '+')) {
 		return(true);
+	} else {
+		return(false);
 	}
 }
+
+int Jalan(POINT P) {
+	int a, b;
+	a = Absis(P);
+	b = Ordinat(P);
+
+	if (InDanger(MakePOINT(a + 1, b)) || InDanger(MakePOINT(a - 1, b)) || InDanger(MakePOINT(a, b + 1)) || InDanger(MakePOINT(a, b - 1))) {
+		return 0;
+	} else {
+		return(Kabur(P));
+	}
+}
+
 
 int Kabur(POINT p) {
 	deque <POINT> safe; /*menampung koordinat yang aman. initial state : kosong*/
