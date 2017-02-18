@@ -299,8 +299,9 @@ int Kabur(POINT p) {
 	if (!safe.empty()) {
 		/*ada tempat aman*/
 		POINT safeplace; /*koordinat yang dituju*/
-		Absis(safeplace) = Absis(safe[0]);
-		Ordinat(safeplace) = Ordinat(safe[0]);
+		Absis(safeplace) = Absis(safe.front());
+		Ordinat(safeplace) = Ordinat(safe.front());
+		cout << "Tujuan : "; TulisPOINT(safeplace); cout << "Jarak : " << jarak[Absis(safeplace)][Ordinat(safeplace)] << endl;
 		while (jarak[Absis(safeplace)][Ordinat(safeplace)] > 1) {
 			int i = 1;
 			POINT nextsafeplace;
@@ -322,9 +323,10 @@ int Kabur(POINT p) {
 					Ordinat(nextsafeplace) = Ordinat(safeplace) + 1;
 				}
 				i++;
-			} while (i <= 4 && jarak[Absis(nextsafeplace)][Ordinat(nextsafeplace)] >= jarak[Absis(safeplace)][Ordinat(safeplace)]);
+			} while (i <= 4 && jarak[Absis(nextsafeplace)][Ordinat(nextsafeplace)]<=0 && jarak[Absis(nextsafeplace)][Ordinat(nextsafeplace)] <= jarak[Absis(safeplace)][Ordinat(safeplace)]);
 			Absis(safeplace) = Absis(nextsafeplace);
 			Ordinat(safeplace) = Ordinat(nextsafeplace);
+			cout << i << "Gerak dulu ke : "; TulisPOINT(safeplace); cout << "Jarak : " << jarak[Absis(safeplace)][Ordinat(safeplace)] << endl;
 		}
 		if (Absis(safeplace) < Absis(p)) {
 			/*titik yang dituju ada di sebelah kiri pemain*/
