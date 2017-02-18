@@ -21,6 +21,8 @@ bool CekTembok(POINT P);
 /*true jika disebelah player terdapat tembok*/
 int Jalan(POINT P);
 /*mngembalikkan kode gerakkan untuk jalan*/
+void Jalan2(POINT p, int d, deque<POINT>& safe, deque<POINT>& notsafe);
+/*Prosedur antara jalan*/
 int Kabur(POINT p);
 /*mengembalikan kode gerakan yang harus dilakukan untuk kabur dari titik p*/
 /*prekondisi : titik p tidak aman (InDanger(p)==true)*/
