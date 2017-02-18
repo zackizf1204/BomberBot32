@@ -260,6 +260,16 @@ bool InDanger(POINT P)
 	return(DangerKanan(P) || DangerKiri(P) || DangerAtas(P) || DangerBawah(P) || (IsNotCapital(Block(GameMap, Absis(P), Ordinat(P)))));
 }
 
+bool CekTembok(POINT P) {
+	int a, b;
+	a = Absis(P);
+	b = Ordinat(P);
+
+	if ((Block(GameMap, a + 1, b) == '+') || (Block(GameMap, a - 1, b) == '+') || (Block(GameMap, a, b + 1) == '+') || (Block(GameMap, a, b - 1) == '+')) {
+		return(true);
+	}
+}
+
 int Kabur(POINT p) {
 	deque <POINT> safe; /*menampung koordinat yang aman. initial state : kosong*/
 	deque <POINT> notsafe; /*menampung koordinat yang tidak aman. initial state : kosong*/
