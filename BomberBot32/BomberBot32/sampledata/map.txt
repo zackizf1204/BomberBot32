@@ -1,40 +1,58 @@
-Map Width: 21, Map Height: 21, Current Round: 62, Seed: 200557449, PlayerBounty: 600
+Map Width: 21, Map Height: 21, Current Round: 130, Seed: 1013420872, PlayerBounty: 340
 #####################
-#   ++  ++ ++  +  + #
-# #+# #+# # #+# #+#+#
-#       +   ++   +  #
-#+# #+# # # # #+# # #
-# + ++         ++ + #
-# #+#+# # # # #+#+# #
-# +++   + + +B  +++ #
-# # # # # #+# # # # #
-# +  +   a5++5 +  + #
-#+# #+# #  +# #+# #+#
-# +  +    +++  +  + #
-# # # # #+#+# # # # #
-# +++   + +     + + #
-# #+#+# # # # # # # #
-# + ++              #
-# # #+# # # # # # #+#
-#  +   ++   +       #
-#+#+# #+# # #+# # # #
-# +  +  ++ ++  +    #
+#   ++  ++ ++  +    #
+# # # #+#+#+#+# # # #
+#      ++   ++      #
+# # # # #+#+# # # #+#
+#+        +       ++#
+# # # # # # # # # # #
+#+                 +#
+#+# # # # # # # # #+#
+#+        A         #
+# # # # #   # # # # #
+#                   #
+#+# # # # # # # #+#+#
+#     C     D      +#
+# # # # # # # #+# # #
+#               ++++#
+# # # # # #+# # # #+#
+#      ++   +       #
+# # # #+# #+# # # # #
+#   ++  +  b        #
 #####################
 ---------------------------
-Player Name: Player 1
+Player Name: John
 Key: A
-Points: 148
+Points: 204
 Status: Alive
-Bombs: {x:10,y:10,fuse:7,radius:2},{x:11,y:10,fuse:5,radius:2}
-BombBag: 0
+Bombs: 
+BombBag: 2
 BlastRadius: 2
+---------------------------
+---------------------------
+Player Name: BomberBot32
+Key: B
+Points: 66
+Status: Alive
+Bombs: {x:12,y:20,fuse:1,radius:4}
+BombBag: 0
+BlastRadius: 4
 ---------------------------
 ---------------------------
 Player Name: John
-Key: B
-Points: 129
+Key: C
+Points: 285
 Status: Alive
-Bombs: {x:14,y:10,fuse:5,radius:2}
-BombBag: 1
-BlastRadius: 2
+Bombs: 
+BombBag: 3
+BlastRadius: 16
+---------------------------
+---------------------------
+Player Name: John
+Key: D
+Points: 357
+Status: Alive
+Bombs: 
+BombBag: 4
+BlastRadius: 16
 ---------------------------
