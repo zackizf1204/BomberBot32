@@ -111,11 +111,16 @@ void writeMoveFile(string filePath, char playerKey)
 		else {
 
 			/*jalan*/
-			random_device rd;
+			if (CekTembok(PlayerPosition)) {
+				int z = 5;
+				outfile << z << endl;
+			} else {
+				outfile << Jalan(PlayerPosition) << endl;
+			}
+			/*random_device rd;
 			mt19937 rng(rd());
 			uniform_int_distribution<int> uni(1, 5);
-			outfile << uni(rng) << endl;
-
+			outfile << uni(rng) << endl;*/
 
 		} /*seharusnya algoritma jalan*/
 	}
