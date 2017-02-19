@@ -109,13 +109,19 @@ void writeMoveFile(string filePath, char playerKey)
 			outfile << Kabur(PlayerPosition) << endl;
 		}
 		else {
-
 			/*jalan*/
-			if (CekTembok(PlayerPosition)) {
-				int z = 5;
+			if (NeffBombs(Elmt(PlayerList, i))>0) {
+				int z = 6;
 				outfile << z << endl;
-			} else {
-				outfile << Jalan(PlayerPosition) << endl;
+			}
+			else {
+				if (CekTembok(PlayerPosition)) {
+					int z = 5;
+					outfile << z << endl;
+				}
+				else {
+					outfile << Jalan(PlayerPosition) << endl;
+				}
 			}
 			/*random_device rd;
 			mt19937 rng(rd());
